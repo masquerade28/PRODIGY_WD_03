@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Tic Tac Toe</h1>
+    </div>
+
+    <div class="game-container">
+        <div class="mode-selector">
+            <label for="mode">Select Mode:</label>
+            <select id="mode" onchange="changeMode()">
+                <option value="twoPlayer">Two Player</option>
+                <option value="vsAI">Versus AI</option>
+                
+            </select>
+        </div>
+    <!-- ... (existing HTML remains unchanged) ... -->
+        <div id="turn" class="turn"></div>
+    <!-- ... (existing HTML remains unchanged) ... -->
+
+        <div id="board" class="board" onclick="handleCellClick(event)"></div>
+
+        <div id="message" class="message"></div>
+        <div id="turn" class="turn"></div>
+        <button class="reset-button" onclick="resetGame()">Reset Game</button>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>

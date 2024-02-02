@@ -1,3 +1,4 @@
+/* Global styling for the entire body */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #3494e6, #ec6ead);
@@ -7,30 +8,33 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
-    color: #fff; /* Set text color to white for better visibility on the gradient background */
+    color: #fff; /* Text color set to white for better visibility on the gradient background */
 }
 
+/* Styling for the header section */
 .header {
     text-align: center;
     margin-bottom: 10px;
 }
 
+/* Styling for the header's h1 element */
 .header h1 {
     color: #fff;
     font-size: 2.5em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-
+/* Styling for the game container */
 .game-container {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for a 3D effect */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     max-width: 400px;
     margin: 20px;
 }
 
+/* Styling for the tic-tac-toe board */
 .board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -39,6 +43,7 @@ body {
     text-align: center;
 }
 
+/* Styling for individual cells in the board */
 .cell {
     width: 100%;
     height: 80px;
@@ -52,26 +57,31 @@ body {
     color: black;
 }
 
+/* Styling for cell hover effect */
 .cell:hover {
     background-color: #f2f2f2;
 }
 
+/* Styling for game messages */
 .message {
     margin-top: 20px;
     font-size: 1.5em;
     color: #333;
 }
 
+/* Styling for mode selector */
 .mode-selector {
     margin: 20px;
 }
 
+/* Styling for labels */
 label {
     font-size: 1.2em;
     margin-right: 10px;
     color: #333;
 }
 
+/* Styling for select dropdowns */
 select {
     padding: 8px;
     font-size: 1em;
@@ -79,6 +89,7 @@ select {
     border-radius: 5px;
 }
 
+/* Styling for game messages */
 .message {
     margin-top: -5px;
     font-size: 1.5em;
@@ -90,6 +101,7 @@ select {
     height: 80px;
 }
 
+/* Styling for turn information */
 .turn {
     margin-top: 10px;
     font-size: 1.2em;
@@ -99,6 +111,7 @@ select {
     justify-content: center;
 }
 
+/* Styling for the reset button */
 .reset-button {
     background-color: #3494e6;
     color: #fff;
@@ -112,6 +125,7 @@ select {
     transition: background-color 0.3s;
 }
 
+/* Styling for reset button hover effect */
 .reset-button:hover {
     background-color: #2074b2;
 }

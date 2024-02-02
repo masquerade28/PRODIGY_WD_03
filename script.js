@@ -1,46 +1,54 @@
-let currentPlayer = 'X';
-let board = ['', '', '', '', '', '', '', '', ''];
-let gameOver = false;
-let mode = 'twoPlayer'; // Default mode
+// Initialize variables
+let currentPlayer = 'X'; // Tracks the current player (initially 'X')
+let board = ['', '', '', '', '', '', '', '', '']; // Represents the tic-tac-toe board
+let gameOver = false; // Indicates whether the game is over
+let mode = 'twoPlayer'; // Default mode is 'twoPlayer', can be changed to 'vsAI'
 
+// Function to handle mode change
 function changeMode() {
-    mode = document.getElementById('mode').value;
-    resetGame();
+    mode = document.getElementById('mode').value; // Get selected mode from HTML dropdown
+    resetGame(); // Reset the game when mode changes
 }
 
+// Function to reset the game
 function resetGame() {
-    currentPlayer = 'X';
-    board = ['', '', '', '', '', '', '', '', ''];
-    gameOver = false;
-    updateBoard();
-    updateMessage('');
+    currentPlayer = 'X'; // Reset the current player to 'X'
+    board = ['', '', '', '', '', '', '', '', '']; // Clear the board
+    gameOver = false; // Reset game over status
+    updateBoard(); // Update the visual representation of the board
+    updateMessage(''); // Clear any previous messages
 }
 
+// Event handler for cell click
 function handleCellClick(event) {
-    if (gameOver) return;
+    if (gameOver) return; // Return if the game is already over
 
-    const cellIndex = event.target.dataset.index;
+    const cellIndex = event.target.dataset.index; // Get the index of the clicked cell
 
     if (board[cellIndex] === '') {
-        board[cellIndex] = currentPlayer;
-        checkWinner();
+        // If the clicked cell is empty
+        board[cellIndex] = currentPlayer; // Mark the cell with the current player's symbol
+        checkWinner(); // Check if the current player has won
         if (mode === 'vsAI' && !gameOver) {
-            playAI();
+            playAI(); // If playing against AI, let AI make a move
         }
-        updateBoard();
-        switchPlayer();
+        updateBoard(); // Update the visual representation of the board
+        switchPlayer(); // Switch to the next player
     }
 }
 
+// Function to make a move for the AI
 function playAI() {
-    const bestMove = getBestMove(board, 'O');
-    board[bestMove.index] = 'O';
-    checkWinner();
-    updateBoard();
-    switchPlayer();
+    const bestMove = getBestMove(board, 'O'); // Get the best move for the AI (player 'O')
+    board[bestMove.index] = 'O'; // Make the AI move
+    checkWinner(); // Check if the AI has won
+    updateBoard(); // Update the visual representation of the board
+    switchPlayer(); // Switch to the next player
 }
 
+// Function to get the best move for a player using minimax algorithm
 function getBestMove(board, player) {
+    // ... (minimax algorithm implementation, recursively explores possible moves)
     const emptyCells = board.reduce((acc, val, index) => val === '' ? acc.concat(index) : acc, []);
 
     if (checkWinnerForPlayer(board, 'X')) {
@@ -92,7 +100,9 @@ function getBestMove(board, player) {
     return bestMove;
 }
 
+// Function to check if a specific player has won
 function checkWinnerForPlayer(board, player) {
+    // ... (checks for winning combinations for a given player)
     const winningCombinations = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
         [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
@@ -109,7 +119,9 @@ function checkWinnerForPlayer(board, player) {
     return false;
 }
 
+// Function to check if the game has a winner or is a draw
 function checkWinner() {
+    // ... (checks for winning combinations and updates game status)
     const winningCombinations = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
         [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
@@ -131,7 +143,9 @@ function checkWinner() {
     }
 }
 
+// Function to update the visual representation of the board
 function updateBoard() {
+    // ... (updates the HTML elements to reflect the current state of the board)
     const boardElement = document.getElementById('board');
         boardElement.innerHTML = '';
         for (let i = 0; i < board.length; i++) {
@@ -143,38 +157,22 @@ function updateBoard() {
         }
 }
 
+// Function to update the message displayed on the page
 function updateMessage(msg) {
-    document.getElementById('message').textContent = msg;
+    document.getElementById('message').textContent = msg; // Update the message element
 }
 
-function switchPlayer() {
-    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-}
-
-
+// Function to update the turn information on the page
 function updateTurn() {
-    document.getElementById('turn').textContent = `Turn: ${currentPlayer}`;
+    document.getElementById('turn').textContent = `Turn: ${currentPlayer}`; // Update the turn information
 }
 
+// Function to switch the current player
 function switchPlayer() {
-    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    updateTurn();
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player from 'X' to 'O' or vice versa
+    updateTurn(); // Update the displayed turn information
 }
-
-// ... (existing JavaScript code remains unchanged) ...
-
-function resetGame() {
-    currentPlayer = 'X';
-    board = ['', '', '', '', '', '', '', '', ''];
-    gameOver = false;
-    updateBoard();
-    updateMessage('');
-    updateTurn();
-}
-
-// ... (existing JavaScript code remains unchanged) ...
-
 
 // Initial setup
-resetGame();
+resetGame(); // Initialize the game state
 updateTurn(); // Display the initial turn
